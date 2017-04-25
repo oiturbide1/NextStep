@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13E28" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Day" representedClassName="Day" syncable="YES">
+        <attribute name="active" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="kNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="toExercise" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Exercise" inverseName="toDay" inverseEntity="Exercise" syncable="YES"/>
+        <relationship name="toWeek" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Week" inverseName="toDay" inverseEntity="Week" syncable="YES"/>
+    </entity>
+    <entity name="Exercise" representedClassName="Exercise" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reps" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="toDay" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Day" inverseName="toExercise" inverseEntity="Day" syncable="YES"/>
+        <relationship name="toSets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sets" inverseName="toExercise" inverseEntity="Sets" syncable="YES"/>
+    </entity>
+    <entity name="Run" representedClassName="Run" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="time" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="Sets" representedClassName="Sets" syncable="YES">
+        <attribute name="set" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="weight" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="toExercise" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Exercise" inverseName="toSets" inverseEntity="Exercise" syncable="YES"/>
+    </entity>
+    <entity name="Week" representedClassName="Week" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="toDay" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Day" inverseName="toWeek" inverseEntity="Day" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Day" positionX="-666" positionY="260" width="128" height="118"/>
+        <element name="Exercise" positionX="-398" positionY="189" width="128" height="103"/>
+        <element name="Run" positionX="-524" positionY="72" width="128" height="73"/>
+        <element name="Sets" positionX="-234" positionY="317" width="128" height="88"/>
+        <element name="Week" positionX="-729" positionY="36" width="128" height="73"/>
+    </elements>
+</model>
